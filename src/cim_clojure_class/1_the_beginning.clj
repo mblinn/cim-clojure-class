@@ -88,3 +88,72 @@
 ; This uses a very efficient, novel datastructure.  It's 2-4 times slower than Java's mutable data structures to
 ; add, and uses a bit more memory.  That's pretty darn good for a completely immutable datastructure!
 
+; Vectors ca
+(def a-vector [1 2 3])
+
+;--> (a-vector 0)
+
+; Conj...
+; (conj a-vector 4)
+
+; Sets
+(def a-set #{:foo :bar :baz})
+;--> (a-set :foo)
+
+;--> (conj a-set :quz :foo)
+
+; functions
+(defn a-function [an-argument]
+  "A simple function."
+  (str "this is an argument " an-argument))
+
+(defn side-effectful [an-argument]
+  "A simple function with a let statement and side effect."
+  (let [a-string (str "an-argument" an-argument)]
+    (println a-string)
+    a-string))
+
+; conditionals
+(defn half-if-even [num]
+  "Divdes the number by two if it's even,
+   otherwise returns it as is."
+  (if (even? num)
+    (/ num 2)
+    num))
+
+(defn get-job-type [name]
+  "Given a name, get a job type."
+  (cond 
+    (= "MBL" name) :architect
+    (= "Mishu" name) :troll
+    (= "Trevor" name) :developer
+    (= "Jon" name) :architect
+    :else :unknown))
+
+; read
+(def read-vec (read-string "[1 2 3]"))
+(def read-map (read-string "{:foo \"foo\" :bar \"bar\"}"))
+
+; eval
+
+; quote
+;--> (quote (+ 1 1))
+;--> '(+ 1 1)
+
+; lists
+;--> ("hello" "world")
+; ClassCastException java.lang.String cannot be cast to clojure.lang.IFn  ...
+;--> '("hello" "world")
+(def hello-list '("hello", "world"))
+(def fn-list '(hello-world))
+;--> (type hello-list)
+;--> (type fn-list)
+
+;--> (eval hello-list)
+;--> (eval fn-list) 
+
+(defn make-helloer [name]
+  "Take a name as a string and creates a function that says hello to that name.
+   ie: (make-helloer \"jack\") creates the function (hello-jack)" 
+  (let [sym-name (symbol (str "hello-" name))]
+    (eval '(defn sym-name [] (println (str "hello " name))))))
