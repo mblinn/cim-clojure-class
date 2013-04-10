@@ -135,6 +135,8 @@
 (def read-map (read-string "{:foo \"foo\" :bar \"bar\"}"))
 
 ; eval
+; vars
+(def a-var "this is the value")
 
 ; quote
 ;--> (quote (+ 1 1))
@@ -155,5 +157,21 @@
 (defn make-helloer [name]
   "Take a name as a string and creates a function that says hello to that name.
    ie: (make-helloer \"jack\") creates the function (hello-jack)" 
-  (let [sym-name (symbol (str "hello-" name))]
-    (eval '(defn sym-name [] (println (str "hello " name))))))
+  (let [fn-name (symbol (str "hello-" name))
+        fn-form (list 'defn fn-name [] 
+                      (list 'println (str "hello " name)))]
+        (eval fn-form)
+        fn-form))
+
+(defn make-helloer-two [name]
+  "Same as make-helloer, but uses syntax quote."
+  (let [fn-name (symbol (str "hello-" name))
+        fn-form `(defn ~fn-name [] (println ~(str "hello " name)))]
+    (eval fn-form)
+    fn-form))
+
+(defmacro make-helloer-macro [name]
+  "Macro version of make-helloer"
+  (let [fn-name (symbol (str "hello-" name))]
+    `(defn ~fn-name [] (println ~(str "hello " name)))))
+  
