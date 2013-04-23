@@ -1,13 +1,20 @@
 # cim-clojure-class
 
-A Clojure library designed to ... well, that part is up to you.
+Project for an introductory Clojure class.
 
-## Usage
+## Setup
 
-FIXME
+I'll be using Eclipse and Counterclockwise, Eclipse's Clojure plugin, during the class.
 
-## License
+Instructions on getting set up with Eclipse and Counterclockwise are here:
 
-Copyright © 2013 FIXME
+http://code.google.com/p/counterclockwise/wiki/Documentation#Install\_Counterclockwise
 
-Distributed under the Eclipse Public License, the same as Clojure.
+You can also use your IDE/Editor of choice.
+
+Getting started instructions for a variety of IDEs can be found here:
+
+http://dev.clojure.org/display/doc/Getting+Started
+
+If you're using Eclipse and Counterclockwise, all you need to do once you've got this cloned is create a new Clojure project called 'cim-clojure-class' 
+in the Eclipse workspace you've got it checked out to.  The plugin integrates with Clojure's build tool, Leinengen, to set up the classpath etc.

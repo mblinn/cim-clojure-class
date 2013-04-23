@@ -1,8 +1,7 @@
-/target
-.settings
 .classpath
-/bin
 .project
+bin/
+/target
 /lib
 /classes
 /checkouts
