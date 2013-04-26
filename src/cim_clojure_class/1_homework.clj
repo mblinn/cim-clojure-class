@@ -7,26 +7,28 @@
 (def a-map {:foo "foo" :bar "bar"})
 (def a-list '("a" "b" "c"))
 
-(= _ a-vector)
-(= _ a-map)
-(= _ a-list)
+(= [1 2 3] a-vector)
+(= {:foo "foo" :bar "bar"} a-map)
+(= '("a" "b" "c") a-list)
 
-(= _ (a-vector 0))
-(= _ (a-map :bar))
+(= 1 (a-vector 0))
+(= "bar" (a-map :bar))
 
-(= _ (first a-list))
-(= _ (rest a-list))
+(= "a" (first a-list))
+(= '("b" "c") (rest a-list))
 
 ;; Functions
 (defn add-two-nums [a b] (+ a b))
 
-(= (add-two-nums _ _) 42)
+(= (add-two-nums 40 2) 42)
 
 ;your prepend-with-hello function goes here.
-(= (prepend-with-hello _) ("Hello, mike"))
+(defn prepend-with-hello [name]
+  (str "Hello, " name))
+(= (prepend-with-hello "mike") "Hello, mike")
 
 ;; Read/Eval
-(= _ (read-string "[:foo :bar :baz]"))
+(= [:foo :bar :baz] (read-string "[:foo :bar :baz]"))
 
-(= _ (read-string "(+ 1 1)"))
-(= _ (eval (read-string "(+ 1 1)")))
+(= '(+ 1 1) (read-string "(+ 1 1)"))
+(= 2 (eval (read-string "(+ 1 1)")))
