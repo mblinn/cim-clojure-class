@@ -23,7 +23,7 @@
 (= (add-two-nums _ _) 42)
 
 ;your prepend-with-hello function goes here.
-(= (prepend-with-hello _) ("Hello, mike"))
+(= (prepend-with-hello _) "Hello, mike")
 
 ;; Read/Eval
 (= _ (read-string "[:foo :bar :baz]"))
