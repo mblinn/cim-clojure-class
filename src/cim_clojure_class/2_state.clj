@@ -22,7 +22,7 @@
         (fn [agent] (+ agent value))))
 
 ;; Refs and the STM
-; Provide a way to manage shared, asyncronous, independent state.
+; Provide a way to manage shared, asyncronous, state.
 (def vec-count (ref 0))
 (def vec-ref (ref []))
 (defn add-to-refs [value]

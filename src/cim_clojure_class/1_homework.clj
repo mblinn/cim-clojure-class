@@ -7,7 +7,7 @@
 (def a-map {:foo "foo" :bar "bar"})
 (def a-list '("a" "b" "c"))
 
-(= _ a-vector)
+(= [1 2 3] a-vector)
 (= _ a-map)
 (= _ a-list)
 
